@@ -1,14 +1,13 @@
 services:
   - type: web
     name: playlist-player
-    runtime: node
+    runtime: docker
     plan: free
-    buildCommand: npm install && npm run build
-    startCommand: npm start
+    dockerfilePath: ./Dockerfile
+    dockerContext: ./
     healthCheckPath: /
     envVars:
       - key: NODE_ENV
         value: production
     autoDeploy: true
     branch: main
-    rootDir: ./
